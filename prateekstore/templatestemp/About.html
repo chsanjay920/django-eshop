@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0">
+    <title>About| E-Commerce</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+<body>
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <text><strong>Sai Kamal</strong></text>
+            </div>
+            <nav>
+                <ul id="menuitems">
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="/product/">Products</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                    <li><a href="/account/">Account</a></li>
+                    <li><a href="/index/">Sign Out</a></li>
+                </ul>
+            </nav>
+            <img src="{% static 'cart.png' %}" onclick="window.location.href = '/cart/';" type="button" width="30px" height="30px" class="carteffect">
+            <img src="{% static 'menu.png' %}" class="menu" onclick="menutoggle()" >
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    var MenuItems= document.getElementById("menuitems");
+
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle(){
+    if(menuitems.style.maxHeight == "0px")
+    {
+        MenuItems.style.maxHeight = "200px";
+    }
+    else
+    {
+        MenuItems.style.maxHeight = "0px";
+    }
+    }
+</script>   

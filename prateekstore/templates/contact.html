@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% load static %} {% block content %} {% load cart %}
+{% load custom_filter %}
+
+<div class="d-flex justify-content-center mt-5">
+  <div class="card mt-5 col-5 p-0">
+    <div class="card-header text-center h3">Contact Us</div>
+    <div class="card-body text-center">
+      <h5 class="card-title">
+        For any inquiries,<br />
+        please contact us via email or phone.
+      </h5>
+      <ul class="list-group mt-4">
+        <li class="list-group-item">Email: Support@saikamal.com</li>
+        <li class="list-group-item">Phone: 123-456-7890</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

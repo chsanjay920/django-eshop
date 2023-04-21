@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'styleforaccount.css' %}" />
+</head>
+<div class="d-flex justify-content-center">
+  <div>
+    <div class="cont">
+      <div class="form">
+        <h2 class="heading">Sign In</h2>
+
+        <form action="/login" method="POST">
+          {% csrf_token %} {% if error%}
+          <div class="alert alert-danger" role="alert">{{error}}</div>
+          {% endif %}
+          <div class="form-group">
+            <label for="">
+              <span for="">Email</span>
+              <input required type="email" name="email" id="" value="{{values.email}}"
+                class=" form-control-sm form-control" placeholder="abc@gmail.com">
+            </label>
+          </div>
+          <!-- password -->
+          <div class="form-group">
+            <label for="">
+              <span for="">Password</span>
+              <input type="password" name="password" id="" class="form-control form-control-sm">
+            </label>
+          </div>
+          <button class="submit" type="submit">Sign In</button>
+        </form>
+
+        <p class="para">
+          You can find us on the following social media platforms
+        </p>
+        <div class="social-media">
+          <ul>
+            <li><img src="{% static 'facebook.png' %}" /></li>
+            <li><img src="{% static 'twitter.png' %}" /></li>
+            <li><img src="{% static 'linkedin.png' %}" /></li>
+            <li><img src="{% static 'instagram.png' %}" /></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-cont">
+        <div class="img">
+          <div class="img-text m-up">
+            <h2>New User ?</h2>
+            <p>
+              Sign up to dicover new products which helps you to live your life
+              with ease
+            </p>
+          </div>
+          <div class="img-text m-in">
+            <h2>Exisiting user ?</h2>
+            <p>
+              Do you already have an account, if 'Yes' then Sign In to explore
+            </p>
+          </div>
+          <div class="img-btn">
+            <span class="m-up">Sign Up</span>
+            <span class="m-in">Sign In</span>
+          </div>
+        </div>
+        <div id="error"></div>
+        <form class="form" action="/signup" method="post" id="form" onsubmit="return valid()">
+          {%csrf_token%}
+          <h2 class="heading">Sign Up</h2>
+          {% if error%}
+          <div class="alert alert-danger" role="alert">{{error}}</div>
+          {% endif %}
+          <div class="form-group">
+            <label>
+              <span>First Name</span>
+              <input type="text" name="firstname" id="" value="{{values.first_name}}" class="" placeholder="" />
+            </label>
+          </div>
+          <!-- last name -->
+          <div class="form-group">
+            <label for="">
+              <span for="">Last Name</span>
+              <input type="text" name="lastname" id="" value="{{values.last_name}}" class="-sm" />
+            </label>
+          </div>
+          <!-- phone -->
+          <div class="form-group">
+            <label for="">
+              <span for="">Phone</span>
+              <input type="text" name="phone" id="" class="-sm" value="{{values.phone}}" placeholder="9876543210" />
+            </label>
+          </div>
+          <!-- email -->
+          <div class="form-group">
+            <label for="">
+              <span for="">Email</span>
+              <input required type="email" name="email" id="" value="{{values.email}}" class=""
+                placeholder="abc@gmail.com" />
+            </label>
+          </div>
+          <!-- password -->
+          <div class="form-group">
+            <label for="">
+              <span for="">Password</span>
+              <input type="password" name="password" id="" class="-sm" />
+            </label>
+          </div>
+          <button type="submit" class="submit" id="submit" onsubmit="return valid()">
+            Sign Up Now
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.querySelector(".img-btn").addEventListener("click", function () {
+    document.querySelector(".cont").classList.toggle("s-signup");
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=design-width, intial-scale=1">
+    <link rel="stylesheet" href="{% static 'styleforaccount.css' %}"/>  
+    <script defer src = "{% static 'validation.js' %}"></script>
+</head>
+<body>
+  <div>
+    <h1>Welcome to Sai Kamal Industrial Corporation</h1>
+    <div class="cont">
+        <div class="form">
+            <h2 class="heading">Sign In</h2>
+            {% if error_message %}
+            <p>{{ error_message }}</p>
+            {% endif %}
+            <form action="{% url 'signin' %}" method="post">
+              {% csrf_token %}
+            <label>
+                <span>Email Address</span>
+                <input type="email" name="Email">
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" name="Password">
+            </label>
+            <button class="submit" type="submit">Sign In</button>
+            </form>
+            <p onclick="window.location.href = 'ForgotPassword.html';" class="forgot-pass">Forgot Password ?</p>
+            <p class="para">You can find us on the following social media platforms</p>
+            <div class="social-media">
+                <ul>
+                  <li><img src="{% static 'facebook.png' %}"></li>
+                  <li><img src="{% static 'twitter.png' %}"></li>
+                  <li><img src="{% static 'linkedin.png' %}"></li>
+                  <li><img src="{% static 'instagram.png' %}"></li>
+                </ul>
+              </div>
+            </div>
+        
+            <div class="sub-cont">
+              <div class="img">
+                <div class="img-text m-up">
+                  <h2> New User ?</h2>
+                  <p>Sign up to dicover new products which helps you to live your life with ease</p>
+                </div>
+                <div class="img-text m-in">
+                  <h2>Exisiting user ?</h2>
+                  <p>Do you already have an account, if 'Yes' then Sign In to explore</p>
+                </div>
+                <div class="img-btn">
+                  <span class="m-up">Sign Up</span>
+                  <span class="m-in">Sign In</span>
+                </div>
+              </div>
+              <div id = "error"></div>
+              <form class="form" action="" method="post" id ='form' onsubmit="return valid()"> {%csrf_token%}
+                <h2 class="heading">Sign Up</h2>
+                <label>
+                  <span>Name</span>
+                  <input type="text" name="Name" place holder="Enter your name" id="Name">
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input type="email" name="Email" id="Email">
+                </label>
+                <label> 
+                  <span>Mobile Number</span>
+                  <input type="number" name="MobileNumber" id="MobileNumber">
+                </label>
+                <label>
+                  <span>Password</span>
+                  <input type="password" name="Password" id="Password">
+                </label>
+                <label>
+                  <span>Confirm Password</span>
+                  <input type="password" name="CPassword" id="CPassword">
+                </label>
+                <button type="submit" class="submit" id="submit" onsubmit="return valid()">Sign Up Now</button>
+              </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script>
+      document.querySelector('.img-btn').addEventListener('click', function()
+	{
+		document.querySelector('.cont').classList.toggle('s-signup')
+	}
+);
+
+    </script>
+    
+</body>    
+</html>

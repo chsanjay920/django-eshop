@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% load static %} {% block content %} {% load cart %}
+{% load custom_filter %}
+<head>
+	<script>
+		function submitForm(counter) {
+		  // locate the form element using the counter value
+		  var form = document.getElementById('form-' + counter);
+		  console.log(form);
+		  // submit the form
+		  form.submit();
+	  }
+	  </script>
+</head>
+<!-- body -->
+<div class="mt-3">
+  <div class="small-container">
+    <div class="row number2">
+      <h2>All Products</h2>
+    </div>
+    <div class="row">
+      {% for product in products %}
+      <div type="card mx-auto mb-5" id="div-{{ forloop.counter }} " class="imgcol-3" onclick="submitForm(`{{ forloop.counter }}`)">
+        <img style="width: 200px; height: 200px" src="{{product.image.url}}" />
+        <div class="mx-0 my-3 mb-4">
+          <p class="h5 card-title">{{product.name|truncatechars:17}}</p>
+          <p class="card-text"><b>Prize : £{{product.price}}.00</b></p>
+        </div>
+        <form id="form-{{ forloop.counter }}" method="post" action="{% url 'productdetailes' %}">
+          {% csrf_token %}
+          <input
+            hidden
+            type="text"
+            id="productid"
+            name="productid"
+            value="{{product.id}}"
+          />
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      <!-- <div id='products' class="col-lg-9 mx-auto">
+			<div class="row mx-auto">
+				{% for product in products %}
+				<div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;">
+					<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
+					<div class="card-body">
+						<p class="card-title">{{product.name}}</p>
+						<p class="card-text"><b>{{product.price|currency}}</b></p>
+						
+					</div>
+
+					<div class="card-footer p-0 no-gutters">
+
+						{% if product|is_in_cart:request.session.cart %}
+						<div class="row no-gutters">
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input hidden type="text" name='remove' value='True'>
+								<input type="submit" value=" - " class="btn btn-block btn-success border-right">
+							</form>
+							<div class="text-center col btn btn-success">{{product|cart_quantity:request.session.cart}} in Cart</div>
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input type="submit" value=" + " class="btn btn-block btn-success border-left">
+							</form>
+						</div>
+						{% else %}
+						<form action="/#{{product.id}}" method="POST" class="btn-block">
+							{% csrf_token %}
+							<input hidden type="text" name='product' value='{{product.id}}'>
+							<input type="submit" class="float-right btn btn-success form-control"
+								value="Add To Cart">
+						</form>
+						{% endif %}
+
+					</div>
+
+				</div>
+				{% endfor %}
+			</div>
+		</div> -->
+    </div>
+  </div>
+
+  {% endblock %}
+</div>
+

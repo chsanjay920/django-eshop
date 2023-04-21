@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0">
+    <title>Account Settings | E-Commerce</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+<head>
+<body class="Account_background">
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <text><strong>Sai Kamal</strong></text>
+            </div>
+            <nav>
+                <ul id="menuitems">
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="/product/">Products</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                    <li><a href="/index/">Sign Out</a> </li>
+                </ul>
+            </nav>
+            <img src="{% static 'cart.png' %}" onclick="window.location.href = '/cart/';" type="button" width="30px" height="30px" class="carteffect">
+            <img src="{% static 'menu.png' %}" class="menu" onclick="menutoggle()" >
+        </div>
+    </div>
+</div>
+<div class="container_2">
+    <div class="left-box">
+        <nav class="navbar_account">
+            <a onclick="tabs(0)" class="tab active">
+                <i class="fas fa-user"></i>
+            </a>
+        </nav>
+    </div>
+    <div class="right-box">
+        <div class="profile tabShow">
+            <h1 class="Account_h1">Personal Details</h1>
+            <h2 class="Account_h2">Full Name</h2>
+            <input type="text" class="input" value="Prateek Chitimilla">
+            <h2 class="Account_h2">Birthday</h2>
+            <input type="text" class="input" value="December 15">
+            <h2 class="Account_h2">Gender</h2>
+            <input type="text" class="input" value="Male">
+            <h2 class="Account_h2">Email</h2>
+            <input type="email" class="input" value="prateek@20001512@gmail.com">
+            <h2 class="Account_h2">Password</h2>
+            <input type="password" class="input" value="Prateek">
+            <button class="button">Update</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    var MenuItems= document.getElementById("menuitems");
+
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle(){
+    if(menuitems.style.maxHeight == "0px")
+    {
+        MenuItems.style.maxHeight = "200px";
+    }
+    else
+    {
+        MenuItems.style.maxHeight = "0px";
+    }
+    }
+</script>   

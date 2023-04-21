@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0">
+    <title>SaiKamal | E-Commerce</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+<body>
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <text><strong>Sai Kamal</strong></text>
+            </div>
+            <nav>
+                <ul id="menuitems">
+                    <li><a href="/product/">Products</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                    <li><a href="/account/">Account</a></li>
+                    <li><a href="/index/">Sign Out</a> </li>
+                </ul>
+            </nav>
+            <img src="{% static 'cart.png' %}" onclick="window.location.href = '/cart/';" type="button" width="30px" height="30px" class="carteffect">
+            <img src="{% static 'menu.png' %}" class="menu" onclick="menutoggle()" >
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <h1>Sai Kamal
+                <br>Industrial Corporation</h1>
+                <p>Service is our motive. One stop for all your Industrial Requirements.</p>
+                <a href="" class="button">Explore Now &#8594;</a>
+            </div>
+            <div class="col-2">  
+                <img src="{% static 'cat-6.png' %}">
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="cat">
+    <div class="small-container">
+        <div class="row">
+                <div class="imgcol-2">
+                    <img src="{% static 'cat-4.webp' %}">
+                </div>
+                <div class="imgcol-2">
+                    <img src="{% static 'man2.jpeg' %}">
+                </div>
+                <div class="imgcol-2">
+                    <img src="{% static 'cat-5.avif' %}">
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="small-container">
+    <h2 class="name">Popular Products</h2>
+    <div class="row">
+        <div onclick="window.location.href = '/Helmet/';" type="button" class="imgcol-3">
+            <img src="{% static 'helmet.webp' %}">
+            <h4>Helmet</h4>
+            <p>£10.00</p>
+        </div>
+        <div onclick="window.location.href = '/AdjustableWrench/';" type="button" class="imgcol-3">
+            <img src="{% static 'adjustable_wrench.jpeg' %}">
+            <h4>Adjustable Wrench</h4>
+            <p>£18.00</p>
+        </div>
+        <div onclick="window.location.href = '/ScrewdriverMachine/';" type="button"  class="imgcol-3">
+            <img src="{% static 'screwdriver_machine.jpeg' %}">
+            <h4>Screwdriver Machine</h4>
+            <p>£55.00</p>
+        </div>
+    </div>       
+
+        <h2 class="name">Other Products</h2>
+        <div class="row">
+            <div onclick="window.location.href = '/DrillingMachine/';" type="button" class="imgcol-3">
+                <img src="{% static 'drilling_machine.jpeg' %}">
+                <h4>Drilling Machine</h4>
+                <p>£35.00</p>
+            </div>
+            <div onclick="window.location.href = '/Hammer/';" type="button" class="imgcol-3">
+                <img src="{% static 'hammer.webp' %}">
+                <h4>Hammer</h4>
+                <p>£8.00</p>
+            </div>
+            <div onclick="window.location.href = '/SpannerSet/';" type="button" class="imgcol-3">
+                <img src="{% static 'spanner_set.webp' %}">
+                <h4>Spanner Set</h4>
+                <p>£30.00</p>
+            </div>
+            <div onclick="window.location.href = '/SafetyGlasses/';" type="button" class="imgcol-3">
+                <img src="{% static 'safety_glasses.jpeg' %}">
+                <h4>Safety Glasses</h4>
+                <p>£13.00</p>
+            </div>
+            <div onclick="window.location.href = '/WeldingGloves/';" type="button" class="imgcol-3">
+                <img src="{% static 'welding_gloves.jpeg' %}">
+                <h4>Welding Gloves</h4>
+                <p>£20.00</p>
+            </div>
+            <div onclick="window.location.href = '/Pliers/';" type="button" class="imgcol-3">
+                <img src="{% static 'pliers.jpeg' %}">
+                <h4>Set of 3 Pliers</h4>
+                <p>£10.00</p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="sale">
+       <div class="small-container">
+           <div class="row">
+               <div class="col-2">
+                <img src="{% static 'rods.jpg' %}" class="weldingrodsimg" align="center">
+            </div>
+            <div class="col-2">
+                <p>Exclusively available on Sai Kamal</p>
+                <h1>Welding Rods</h1>
+                <small>Welding electrodes are metal wires with baked on chemical coatings. The rod is used to sustain the welding arc and to provide the filler metal required for the joint to be welded.
+                </small>
+                <br>
+                <a href="" class="button">Buy Now &#8594</a>
+            </div>
+        </div>
+    </div> 
+    <script>
+        var MenuItems= document.getElementById("menuitems");
+
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+        if(menuitems.style.maxHeight == "0px")
+        {
+            MenuItems.style.maxHeight = "200px";
+        }
+        else
+        {
+            MenuItems.style.maxHeight = "0px";
+        }
+        }
+    </script>   
+
+
+        
+</body>
+</html>

@@ -1,0 +1,12 @@
+Helmet ,10,uploads/products/p6.jpeg
+Adjustable wrench ,18,uploads/products/p1.jpeg
+Screw Machine,55,uploads/products/p10.jpeg
+Welding Holder, 12,uploads/products/p7.webp
+Drilling Machine, 35,uploads/products/p2.jpeg
+Hammer, 8,uploads/products/p5.webp
+Spanner Set, 30, uploads/products/p12.webp
+Safety Glasses , 13, uploads/products/p9.jpeg
+Welding Gloves, 20, uploads/products/p13.jpeg
+Set of 3 Pliers, 10 , uploads/products/p8.jpeg
+Welding Machine, 150 , uploads/products/p14.jpeg
+Gum Boots , 20 , uploads/products/p4.jpeg

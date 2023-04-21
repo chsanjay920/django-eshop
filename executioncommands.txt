@@ -1,0 +1,5 @@
+python manage.py makemigrations  
+python manage.py makemigrations prateekstore
+python manage.py sqlmigrate prateekstore 0001
+python manage.py migrate  
+python manage.py runserver  
