@@ -1,14 +1,14 @@
+
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <head>
   <link rel="stylesheet" href="{% static 'styleforaccount.css' %}" />
 </head>
-<div class="d-flex justify-content-center">
-  <div>
-    <div class="cont">
+<div class="d-flex justify-content-center body-login" style="height: 100vh;">
+  <div class="" >
+    <div class="cont mt-5">
       <div class="form">
         <h2 class="heading">Sign In</h2>
-
         <form action="/login" method="POST">
           {% csrf_token %} {% if error%}
           <div class="alert alert-danger" role="alert">{{error}}</div>
@@ -29,7 +29,11 @@
           </div>
           <button class="submit" type="submit">Sign In</button>
         </form>
-
+        <div class="">
+          <small id="" class="form-text  text-center">
+            <a href="/forgetpassword">Forget Password</a>
+          </small>
+        </div>
         <p class="para">
           You can find us on the following social media platforms
         </p>
@@ -113,10 +117,10 @@
     </div>
   </div>
 </div>
-<script>
-  document.querySelector(".img-btn").addEventListener("click", function () {
-    document.querySelector(".cont").classList.toggle("s-signup");
-  });
-</script>
+
+<!-- <head>
+  <script defer src="{% static 'bgimage.js' %}"></script>
+</head> -->
+
 
 {% endblock %}

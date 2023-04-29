@@ -1,0 +1,45 @@
+{% load static %}
+<head>
+	<link rel="stylesheet" href="{% static 'chat.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div class="collapse-chat-bar">
+	<button id="button-chat" type="button" class="collapse">Chat with us!
+		<i id="icon-chat" style="color: #000000;" class="fa fa-fw fa-comments-o"></i>
+	</button>
+	<div class="content">
+		<div class="chat-block">
+			<!-- Message Container -->
+			<div class="out-container">
+				<div class="chat-cont">
+					<!-- Messages -->
+					<div id="chatbox">
+						<h5 id="chat-timestamp"></h5>
+						<p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+					</div>
+
+					<!-- User input box -->
+					<div class="chat-bar-input">
+						<div id="userInput">
+							<input id="textInput" class="in-box" type="text" name="msg"
+								placeholder="Tap 'Enter' to send a message">
+							<p></p>
+						</div>
+					</div>
+
+					<div id="chat-bar-bottom">
+						<p></p>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script defer src="{% static 'responses.js' %}"></script>
+	<script defer src="{% static 'chat.js' %}"></script>
+</head>

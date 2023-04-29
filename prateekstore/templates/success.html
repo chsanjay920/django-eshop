@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %} {% load static %} {% block content %} {% load cart %}
+{% load custom_filter %}
+
+<div class="d-flex justify-content-center">
+ 
+  <div class="card text-center" style="width: 30rem;" >
+    <div class="card-header h3">
+      Order successfully placed 
+    </div>
+    <div class="card-body p-0">
+      <img
+        src="https://media.istockphoto.com/id/1396933001/vector/vector-blue-verified-badge.jpg?s=612x612&w=0&k=20&c=aBJ2JAzbOfQpv2OCSr0k8kYe0XHutOGBAJuVjvWvPrQ="
+        alt=""
+        srcset=""
+        style="height: 25rem;"
+      />
+    </div>
+    <div class="card-footer d-flex justify-content-around">
+      <a href="/orders">
+        <button class="btn btn-primary" style="width: 10rem;">Orders</button>
+      </a>
+      <a href="/products">
+        <button class="btn btn-primary" style="width: 10rem;">Continue Shop</button>
+      </a>
+    </div>
+</div>  
+</div>
+
+{% endblock %}

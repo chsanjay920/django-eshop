@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,18 +9,19 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
 
   <title>Sai Kamal
     | E-commerce </title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'style.css' %}" />
-  <!-- <link rel="stylesheet" href="{% static 'styleforaccount.css' %}" /> -->
+  <!-- <link rel="stylesheet" href="{% static 'styleforaccount.css' %}" /> --> 
 </head>
 
 <body>
+<div class="body-color">
+<div class="nav-color">
   <!-- navbar -->
   <div style="width: 100%; display: flex; justify-content: center;">
-    <div class="navbar" style="width: 70%;">
+    <div class="navbar" style="width: 90%;">
       <div class="logo">
         <a href="/" style="text-decoration: none;">
           <text><strong>Sai Kamal</strong></text>
@@ -38,14 +40,15 @@
             <a style="text-decoration: none;" href="/support">Contact<span class="sr-only">(current)</span></a>
           </li>
           <li>
-            <a style="text-decoration: none;" href="/cart"><img src="{% static 'cart.png' %}"
-                 type="button" width="30px" height="30px"
-                class="carteffect mx-2" /><span
+            <a style="text-decoration: none;" href="/cart">Cart
+                <span
                 class="badge badge-success">{{request.session.cart.keys|length}}</span><span
                 class="sr-only">(current)</span></a>
           </li>
           {% if request.session.customer %}
-          
+          <li>
+            <a style="text-decoration: none;" href="/orders">Orders<span class="sr-only">(current)</span></a>
+          </li>
           <li>
             <a style="text-decoration: none;" href="/account">Account<span class="sr-only">(current)</span></a>
           </li>
@@ -59,10 +62,14 @@
           <li>
             <a style="text-decoration: none;" href="/login">Login<span class="sr-only">(current)</span></a>
           </li>
+          <img src="{% static 'menu.png' %}" class="menu" onclick="menutoggle()" >
           {% endif %}
+          <img src="{% static 'menu.png' %}" class="menu" onclick="menutoggle()" >
         </ul>
+        
       </nav>
-
+    
+      <img src="{% static 'menu.png' %}" class="menu" onclick="menutoggle()" >
       <!-- <img src="{% static 'menu.png' %}" class="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -72,19 +79,31 @@
         aria-label="Toggle navigation" onclick="menutoggle()" > -->
     </div>
   </div>
-  {% block content %}{% endblock %}
+</div> 
+  {% block content %}
+  {% endblock %}
+
+    <script>
+      var MenuItems= document.getElementById("menuitems");
+
+      MenuItems.style.maxHeight = "0px";
+
+      function menutoggle(){
+      if(menuitems.style.maxHeight == "0px")
+      {
+          MenuItems.style.maxHeight = "270px";
+      }
+      else
+      {
+          MenuItems.style.maxHeight = "0px";
+      }
+      }
+    </script> 
+
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-</body>
+ 
 
+</body>
 </html>

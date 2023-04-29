@@ -1,17 +1,24 @@
+.background_img{
+  background-image: url('background.jpeg');
+}
+
+.body-login{
+  background-color: -webkit-linear-gradient(left, rgb(255, 255, 255), rgb(185, 86, 86));
+}
 
 
 input, button{
     border: none;
     outline: none;
     background: none;
-}
+} 
 
 .cont{
     overflow: hidden;
     position:relative;
     width:900px;
     height:550px;
-    background: #fff;
+    
 }
 .form-group{
   margin: 0rem;
@@ -45,7 +52,6 @@ input, button{
     position: relative;
     width: 900px;
     height: 550px;
-    background: #ffffff;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
   }
   
@@ -115,6 +121,7 @@ input, button{
     margin-bottom: 30px;
     text-transform: uppercase;
     font-weight: 600;
+    font-style: black;
     font-family: 'Nunito', sans-serif;
     background: -webkit-linear-gradient(left, white, rgb(185, 86, 86));
   }
@@ -188,6 +195,7 @@ input, button{
     width: 260px;
     height: 100%;
     padding-top: 360px;
+    background-image: url('background.jpeg');
   }
   
   .img:before{
@@ -240,6 +248,7 @@ input, button{
   .img-text p{
     font-size: 14px;
     line-height: 1.5;
+    color:#fff;
   }
   
   .cont.s-signup .img-text.m-up{

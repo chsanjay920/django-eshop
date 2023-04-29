@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block content %}
@@ -6,19 +7,46 @@
 {% load cart %}
 {% load custom_filter %}
 <!-- body -->
-<div class="container-fluid mt-3">
-	<div class="row d-flex justify-content-center">
-		<div class="col-4 mx-5">
-			<h1>Sai Kamal
-				<br>Industrial Corporation
-			</h1>
-			<p>Service is our motive. One stop for all your Industrial Requirements.</p>
-			<a href="" class="button" style="text-decoration: none;">Explore Now &#8594;</a>
-		</div>
-		<div class="col-2">
-			<img style="width: 20vw;" src="{% static 'cat-6.png' %}">
+
+<head>
+	<link rel="stylesheet" href="{% static 'chat.css' %}">
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		function submitForm(counter) {
+			// locate the form element using the counter value
+			var form = document.getElementById('form-' + counter);
+			console.log(form);
+			// submit the form
+			form.submit();
+		}
+		function submitForm2(counter) {
+			// locate the form element using the counter value
+			var form = document.getElementById('form2-' + counter);
+			console.log(form);
+			// submit the form
+			form.submit();
+		}
+	</script>
+</head>
+<div class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<h1>Sai Kamal
+					<br>Industrial Corporation
+				</h1>
+				<p>Service is our motive. One stop for all your Industrial Requirements.</p>
+				<a href="/about" class="button">Explore Now &#8594;</a>
+			</div>
+			<div>
+				<img src="{% static 'cat-6.png' %}">
+			</div>
 		</div>
 	</div>
+</div>
+</div>
+<div>
 	<div class="cat">
 		<div class="small-container">
 			<div class="row">
@@ -34,11 +62,13 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="small-container">
 		<h2 class="name">Popular Products</h2>
 		<div class="row">
 			{% for product in PopularProducts %}
-			<div type="card mx-auto mb-3" id={{product.id}} class="imgcol-3">
+			<div type="card mx-auto mb-3" id={{product.id}} class="imgcol-3"
+				onclick="submitForm(`{{ forloop.counter }}`)">
 				<img style="width: 200px; height: 200px;" src="{{product.image.url}}">
 				<div class="mx-0 my-3 mb-4">
 					<p class="h5 card-title">{{product.name|truncatechars:17}}</p>
@@ -71,6 +101,10 @@
 					</div>
 					{% endif %}
 				</div>
+				<form id="form-{{ forloop.counter }}" method="post" action="{% url 'productdetailes' %}">
+					{% csrf_token %}
+					<input hidden type="text" id="productid" name="productid" value="{{product.id}}" />
+				</form>
 			</div>
 			{% endfor %}
 		</div>
@@ -78,7 +112,8 @@
 		<h2 class="name">Other Products</h2>
 		<div class="row">
 			{% for product in OtherProducts %}
-			<div type="card mx-auto mb-3" id={{product.id}} class="imgcol-3">
+			<div type="card mx-auto mb-3" id={{product.id}} class="imgcol-3"
+				onclick="submitForm2(`{{ forloop.counter }}`)">
 				<img style="width: 200px; height: 200px;" src="{{product.image.url}}">
 				<div class="mx-0 my-3 mb-4">
 					<p class="h5 card-title">{{product.name |truncatechars:15}}</p>
@@ -108,9 +143,14 @@
 							<input hidden type="text" name='product' value='{{product.id}}'>
 							<input type="submit" class="float-right btn btn-success form-control" value="Add To Cart">
 						</form>
+
 					</div>
 					{% endif %}
 				</div>
+				<form id="form2-{{ forloop.counter }}" method="post" action="{% url 'productdetailes' %}">
+					{% csrf_token %}
+					<input hidden type="text" id="productid" name="productid" value="{{product.id}}" />
+				</form>
 			</div>
 			{% endfor %}
 		</div>
@@ -119,7 +159,7 @@
 		<div class=" sale" style="width: 90%;">
 			<div class="row">
 				<div class="col-2">
-					<img src="{% static 'rods.jpg' %}" class="weldingrodsimg" align="center">
+					<img src="{% static 'p16.png' %}" class="weldingrodsimg" align="center">
 				</div>
 				<div class="col-5">
 					<p>Exclusively available on Sai Kamal</p>
@@ -132,66 +172,149 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-
-			<!-- <div class="col-lg-3 mx-auto">
-			<div class="list-group">
-
-				<a href="/" class="list-group-item list-group-item-action btn btn-outline-success">All Products</a>
-
-				{% for category in categories %}
-				<a href="/?category={{category.id}}"
-					class="list-group-item list-group-item-action btn btn-outline-success ">{{category.name}}</a>
-				{% endfor %}
-			</div>
-		</div> -->
-
-			<!-- all products -->
-			<!-- <div id='products' class="col-lg-9 mx-auto">
-			<div class="row mx-auto">
-				{% for product in products %}
-				<div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;">
-					<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
-					<div class="card-body">
-						<p class="card-title">{{product.name}}</p>
-						<p class="card-text"><b>{{product.price|currency}}</b></p>
-						
+	</div>
+</div>
+<div class="chat-bot">
+	<button id="button-chat" type="button" class="collapsebtn" onclick="toggleele(this)">Chat with us!
+		<i id="icon-chat" style="color: #000000;" class="fa fa-fw fa-comments-o"></i>
+	</button>
+	<div class="content">
+		<div class="chat-block">
+			<!-- Message Container -->
+			<div class="out-container">
+				<div class="chat-cont">
+					<!-- Messages -->
+					<div id="chatbox">
+						<h5 id="chat-timestamp"></h5>
+						<p id="botStarterMessage" class="botText"><span>Loading...</span></p>
 					</div>
 
-					<div class="card-footer p-0 no-gutters">
-
-						{% if product|is_in_cart:request.session.cart %}
-						<div class="row no-gutters">
-							<form action="/#{{product.id}}" class="col-2 " method="post">
-								{% csrf_token %}
-								<input hidden type="text" name='product' value='{{product.id}}'>
-								<input hidden type="text" name='remove' value='True'>
-								<input type="submit" value=" - " class="btn btn-block btn-success border-right">
-							</form>
-							<div class="text-center col btn btn-success">{{product|cart_quantity:request.session.cart}} in Cart</div>
-							<form action="/#{{product.id}}" class="col-2 " method="post">
-								{% csrf_token %}
-								<input hidden type="text" name='product' value='{{product.id}}'>
-								<input type="submit" value=" + " class="btn btn-block btn-success border-left">
-							</form>
+					<!-- User input box -->
+					<div class="chat-bar-input">
+						<div id="userInput">
+							<input id="textInput" class="in-box" type="text" name="msg"
+								placeholder="Tap 'Enter' to send a message">
+							<p></p>
 						</div>
-						{% else %}
-						<form action="/#{{product.id}}" method="POST" class="btn-block">
-							{% csrf_token %}
-							<input hidden type="text" name='product' value='{{product.id}}'>
-							<input type="submit" class="float-right btn btn-success form-control"
-								value="Add To Cart">
-						</form>
-						{% endif %}
+					</div>
 
+					<div id="chat-bar-bottom">
+						<p></p>
 					</div>
 
 				</div>
-				{% endfor %}
 			</div>
-		</div> -->
+
 		</div>
 	</div>
-</div>
 
-	{% endblock %}
+</div>
+<head>
+	<script defer src="{% static 'responses.js' %}"></script>
+	<!-- <script defer src="{% static 'chat.js' %}"></script> -->
+	<script>
+
+		
+		function toggleele(element)
+		{
+			element.classList.toggle("active");
+
+			var content = element.nextElementSibling;
+
+			if (content.style.maxHeight) {
+				content.style.maxHeight = null;
+			} else {
+				content.style.maxHeight = content.scrollHeight + "px";
+			}
+		}
+
+
+		function getTime() {
+			let today = new Date();
+			hours = today.getHours();
+			minutes = today.getMinutes();
+
+			if (hours < 10) {
+				hours = "0" + hours;
+			}
+
+			if (minutes < 10) {
+				minutes = "0" + minutes;
+			}
+
+			let time = hours + ":" + minutes;
+			return time;
+		}
+
+
+		function firstBotMessage() {
+			let firstMessage = "How's everything going?"
+			document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
+
+			let time = getTime();
+
+			$("#chat-timestamp").append(time);
+			document.getElementById("userInput").scrollIntoView(false);
+		}
+
+		firstBotMessage();
+
+		function getHardResponse(userText) {
+			let botResponse = getBotResponse(userText);
+			let botHtml = '<p class="botText"><span>' + botResponse + '</span></p>';
+			$("#chatbox").append(botHtml);
+
+			document.getElementById("chat-bar-bottom").scrollIntoView(true);
+		}
+
+		//Gets the text text from the input box and processes it
+		function getResponse() {
+			let userText = $("#textInput").val();
+
+			if (userText == "") {
+				userText = "I love Code Palace!";
+			}
+
+			let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
+
+			$("#textInput").val("");
+			$("#chatbox").append(userHtml);
+			document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+			setTimeout(() => {
+				getHardResponse(userText);
+			}, 1000)
+
+		}
+
+		// Handles sending text via button clicks
+		function buttonSendText(sampleText) {
+			let userHtml = '<p class="userText"><span>' + sampleText + '</span></p>';
+
+			$("#textInput").val("");
+			$("#chatbox").append(userHtml);
+			document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+			//Uncomment this if you want the bot to respond to this buttonSendText event
+			// setTimeout(() => {
+			//     getHardResponse(sampleText);
+			// }, 1000)
+		}
+
+		function sendButton() {
+			getResponse();
+		}
+
+		function heartButton() {
+			buttonSendText("Heart clicked!")
+		}
+
+		// Press enter to send a message
+		$("#textInput").keypress(function (e) {
+			if (e.which == 13) {
+				getResponse();
+			}
+		});
+	</script>
+</head>
+{% endblock %}

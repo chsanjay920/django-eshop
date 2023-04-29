@@ -11,6 +11,16 @@ class Customer(models.Model):
     def register(self):
         self.save()
 
+    @staticmethod
+    def change_password(email,password):
+        try:
+            customer = Customer.objects.get(email=email)
+            customer.password = password
+            customer.save()
+            print("password changed")
+            return True
+        except Customer.DoesNotExist:
+            return False
 
     @staticmethod
     def get_customer_by_email(email):

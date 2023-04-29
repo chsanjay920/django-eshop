@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+.body{
+    background-image: url(back.avif);
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+    url(back.avif);
+    backface-visibility: visible;
+}
+
 .logo{
     border: 10px;
     color: black , white;
@@ -18,6 +25,7 @@
     align-items: center;
     padding: 20px; 
     border-radius: 20px;
+
 }
 
 nav{
@@ -69,10 +77,10 @@ p{
 }
 
 .container{
-    max-width: 1300px;
+    
     margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
+    
+ 
 }
 
 .row{
@@ -107,16 +115,27 @@ p{
     padding: 9px 40px;
     margin: 40px 0;
     border-radius: 40px;
-    transition: background 0.5s;
+    transform: scale(1.2s);
 }
 
-.button:hover{
-    background:#555;
+.buttoneffect{
+    transition: all .3s ease-in-out;
 }
 
 
 .header{
-    background: -webkit-linear-gradient(left, rgb(255, 255, 255), rgb(185, 86, 86));
+    padding:80px;
+    background:  -webkit-linear-gradient(left, rgb(255, 255, 255), rgb(185, 86, 86));
+}
+
+.body-color{
+    background:  -webkit-linear-gradient(left, rgb(255, 255, 255), rgb(185, 86, 86));
+}
+
+
+
+.nav-color{
+    background-color: -webkit-linear-gradient(left, rgb(255, 255, 255), rgb(185, 86, 86));
 }
 
 .background .row{
@@ -145,6 +164,21 @@ p{
     padding-left:20px;
     padding-right:20px;
 }
+
+.small-container-product{
+    background-color: #fff;
+    max-width: 1000px;
+    margin:auto;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top: 1px;
+    padding-bottom: 20px;
+    box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+}
+
+
+
+
 
 .imgcol-3{
     flex-basis:25%;
@@ -202,8 +236,8 @@ p{
 }
 
 .menu{
-    width:28px;
-    margin-left:20px;
+    width:25px;
+    margin-left: 100px;
     margin-top:8px;
     display: none;
 }
@@ -238,7 +272,7 @@ p{
     }
 
     nav ul li a{
-        color:white;
+        color:rgb(255, 255, 255);
     }
 
     .menu{
@@ -421,6 +455,14 @@ td input{
     color: #545252;
     outline: none;
 }
+
+
+
+
+
+
+
+
 
 
 
